@@ -7,6 +7,7 @@
 
 import Test.HUnit
 import Operator
+import ArgsParse
 
 -- Test case data type
 testCase label assertion = TestLabel label (TestCase assertion)
@@ -29,6 +30,10 @@ test_12 = testCase "test12" (assertEqual "test12" ([3,2,1], [3,2,1]) (op_rotate_
 test_13 = testCase "test13" (assertEqual "test13" [3,1,2] (op_rotate_rra_rrb [1,2,3]))
 test_14 = testCase "test14" (assertEqual "test14" [3] (op_rotate_rra_rrb [3]))
 test_15 = testCase "test15" (assertEqual "test15" ([3,1,2], [3,1,2]) (op_rotate_rrr [1,2,3] [1,2,3]))
+test_16 = testCase "test16" (assertEqual "test16" True (isNumber "3"))
+test_17 = testCase "test17" (assertEqual "test17" True (isNumber ""))
+test_18 = testCase "test18" (assertEqual "test18" True (isNumber "a"))
+test_19 = testCase "test19" (assertEqual "test19" True (parseArgs ["1","2","3"]))
 
 -- Test to be run
 tests :: Test
@@ -48,7 +53,11 @@ tests = testSuite "My Test Suite"
         test_12,
         test_13,
         test_14,
-        test_15
+        test_15,
+        test_16,
+        test_17,
+        test_18,
+        test_19
     ]
 
 -- Run the tests
