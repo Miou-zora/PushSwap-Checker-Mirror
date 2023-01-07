@@ -54,8 +54,8 @@ execute (a:an) integers = execute an (switch a integers)
 
 compareTwoListInt :: [Int] -> [Int] -> Bool
 compareTwoListInt [] [] = True
-compareTwoListInt [] (a:an) = False
-compareTwoListInt (a:an) [] = False
+compareTwoListInt [] _ = False
+compareTwoListInt _ [] = False
 compareTwoListInt (a:an) (b:bn)
     | a /= b = False
     | otherwise = compareTwoListInt an bn

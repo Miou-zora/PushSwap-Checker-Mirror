@@ -18,7 +18,7 @@ testSuite label tests = TestLabel label (TestList tests)
 
 op_swap_sa_sb_lambda = testCase "op_swap_sa_sb_lambda" (assertEqual "op_swap_sa_sb_lambda" [2, 1, 3, 4] (op_swap_sa_sb [1, 2, 3, 4]))
 op_swap_sa_sb_solo = testCase "op_swap_sa_sb_solo" (assertEqual "op_swap_sa_sb_solo" [1] (op_swap_sa_sb [1]))
-op_swap_sa_sb_empty = testCase "op_swap_sa_sb_lambda" (assertEqual "op_swap_sa_sb_lambda" [] (op_swap_sa_sb []))
+op_swap_sa_sb_empty = testCase "op_swap_sa_sb_empty" (assertEqual "op_swap_sa_sb_empty" [] (op_swap_sa_sb []))
 op_swap_sc_lambda = testCase "op_swap_sc_lambda" (assertEqual "op_swap_sc_lambda" ([2, 1, 3, 4], [2, 1, 3, 4]) (op_swap_sc ([1, 2, 3, 4], [1, 2, 3, 4])))
 op_swap_sc_empty_1 = testCase "op_swap_sc_empty_1" (assertEqual "op_swap_sc_empty_1" ([], [2, 1, 3, 4]) (op_swap_sc ([], [1, 2, 3, 4])))
 op_swap_sc_empty_2 = testCase "op_swap_sc_empty_2" (assertEqual "op_swap_sc_empty_2" ([2, 1, 3, 4], []) (op_swap_sc ([1, 2, 3, 4], [])))
@@ -55,18 +55,22 @@ littleOperator_lambda = testCase "littleOperator_lambda" (assertEqual "littleOpe
 bigOperator_lambda = testCase "bigOperator_lambda" (assertEqual "bigOperator_lambda" ([3, 1, 2], [3, 1, 2]) (bigOperator "rrr" ([1, 2, 3], [1, 2, 3])))
 switch_lambda_rrr = testCase "switch_lambda_rrr" (assertEqual "switch_lambda_rrr" ([3, 1, 2], [3, 1, 2]) (switch "rrr" ([1, 2, 3], [1, 2, 3])))
 switch_lambda_sa = testCase "switch_lambda_sa" (assertEqual "switch_lambda_sa" ([2, 1, 3], [1, 2, 3]) (switch "sa" ([1, 2, 3], [1, 2, 3])))
+switch_lambda_too_long = testCase "switch_lambda_too_long" (assertEqual "switch_lambda_too_long" ([1, 2, 3], [1, 2, 3]) (switch "saaa" ([1, 2, 3], [1, 2, 3])))
 execute_lambda = testCase "execute_lambda" (assertEqual "execute_lambda" ([1, 2, 3], [1, 2, 3]) (execute ["sa", "sa"] ([1, 2, 3], [1, 2, 3])))
 execute_lambda_sa = testCase "execute_lambda_sa" (assertEqual "execute_lambda_sa" ([2, 1, 3], [1, 2, 3]) (execute ["sa"] ([1, 2, 3], [1, 2, 3])))
 compareTwoListInt_false = testCase "compareTwoListInt_false" (assertEqual "compareTwoListInt_false" False (compareTwoListInt [1, 2, 3] [1, 3, 3]))
 compareTwoListInt_true = testCase "compareTwoListInt_true" (assertEqual "compareTwoListInt_true" True (compareTwoListInt [1, 2, 3] [1, 2, 3]))
-compareTwoListInt_false_s = testCase "compareTwoListInt_false_s" (assertEqual "compareTwoListInt_false_s" False (compareTwoListInt [1, 3] [1, 2, 3]))
+compareTwoListInt_false_s = testCase "compareTwoListInt_false_s" (assertEqual "compareTwoListInt_false_s" False (compareTwoListInt [1, 3, 2] []))
+compareTwoListInt_false_x = testCase "compareTwoListInt_false_x" (assertEqual "compareTwoListInt_false_x" False (compareTwoListInt [] [1, 2, 3]))
 checkEnd_true = testCase "checkEnd_true" (assertEqual "checkEnd_true" True (checkEnd ([1, 3], []) [3, 1]))
 checkEnd_false_empty = testCase "checkEnd_false_empty" (assertEqual "checkEnd_false_empty" False (checkEnd ([3, 1], []) [3, 1]))
 checkEnd_false = testCase "checkEnd_false" (assertEqual "checkEnd_false" False (checkEnd ([1], []) [3, 1]))
 checkEnd_true_all = testCase "checkEnd_true_all" (assertEqual "checkEnd_true_all" True (pushSwapChecker ["sa", "pb", "pb", "pb", "sa", "pa", "pa", "pa"] [2, 1, 3, 6, 5, 8]))
 op_rotate_rra_rrb_lenght = testCase "op_rotate_rra_rrb_lenght" (assertEqual "op_rotate_rra_rrb_lenght" [1] (op_rotate_rra_rrb [1]))
-
-
+pushSwapChecker_Empty = testCase "pushSwapChecker_Empty" (assertEqual "pushSwapChecker_Empty" True (pushSwapChecker [] [1, 2, 3]))
+checkInputs_false = testCase "checkInputs_false" (assertEqual "checkInputs_false" False (checkInputs "rezar" []))
+checkInputs_true = testCase "checkInputs_true" (assertEqual "checkInputs_true" True (checkInputs "sa" ["1"]))
+pushSwapChecker_all = testCase "pushSwapChecker_all" (assertEqual "pushSwapChecker_all" False (pushSwapChecker ["pb", "pb", "pb", "pb", "sb", "rb", "rrb", "sc", "pa", "pb", "pb", "rrb", "ra", "rb", "rra", "rrr"] [1, 2, 3, 4, 1, 1, 2, 5, 1, 1]))
 
 -- Test to be run
 tests :: Test
@@ -82,7 +86,6 @@ tests = testSuite "My Test Suite"
         op_rotate_rra_rrb_1_empty,
         readInt_sign,
         op_swap_sa_sb_empty,
-        op_swap_sc_lambda,
         op_swap_sc_lambda,
         op_swap_sc_empty_1,
         op_swap_sc_empty_2,
@@ -104,6 +107,7 @@ tests = testSuite "My Test Suite"
         parseArgs_false,
         listStringTolistInt_empty,
         listStringTolistInt_lambda,
+        compareTwoListInt_false_x,
         readInt_lambda,
         readInt_nothing,
         checkInputOperator_lambda,
@@ -113,6 +117,7 @@ tests = testSuite "My Test Suite"
         littleOperator_lambda,
         bigOperator_lambda,
         switch_lambda_sa,
+        switch_lambda_too_long,
         execute_lambda,
         execute_lambda_sa,
         compareTwoListInt_false_s,
@@ -121,7 +126,11 @@ tests = testSuite "My Test Suite"
         checkEnd_true,
         checkEnd_false_empty,
         checkEnd_false,
-        checkEnd_true_all
+        checkEnd_true_all,
+        pushSwapChecker_Empty,
+        checkInputs_true,
+        checkInputs_false,
+        pushSwapChecker_all
     ]
 
 -- Run the tests
