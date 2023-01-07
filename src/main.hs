@@ -14,6 +14,6 @@ main = do
     inputOperators <- getLine
     integers <- getArgs
     if ((checkInputs inputOperators integers) && pushSwapChecker (words inputOperators) (listStringTolistInt integers))
-        then putStrLn "Good"
-        else putStrLn "Not Good"
+        then goodExit
+        else errorExit
 

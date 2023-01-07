@@ -10,9 +10,16 @@ module PushSwapChecker where
 import Data.List
 import ArgsParse
 import Operator
+import System.Exit
 
 operators :: [String]
 operators = ["sa", "sb", "sc", "pa", "pb", "ra", "rb", "rr", "rra", "rrb", "rrr"]
+
+goodExit :: IO ()
+goodExit = putStrLn "OK" >> exitWith (ExitSuccess)
+
+errorExit :: IO ()
+errorExit = putStrLn "KO" >> exitWith (ExitFailure 84)
 
 checkInputOperator :: [String] -> Bool
 checkInputOperator [] = True
