@@ -10,6 +10,7 @@ module Operator where
 op_swap_sa_sb :: [Int] -> [Int]
 op_swap_sa_sb [] = []
 op_swap_sa_sb (f_x:f_y:list) = (f_y:f_x:list)
+op_swap_sa_sb a = a
 
 op_swap_sc :: ([Int], [Int]) -> ([Int], [Int])
 op_swap_sc (x, y) = (op_swap_sa_sb x, op_swap_sa_sb y)
