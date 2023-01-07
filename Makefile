@@ -59,9 +59,11 @@ tests_run:		fclean
 			./$(TEST_BINARY)
 			mv *.tix tests/coverage
 			hpc report --per-module --decl-list tests/coverage/unit_tests.tix --verbosity=2
+			hpc markup --destdir=tests tests/coverage/unit_tests.tix
 
 tclean:
 			$(RM) tests/coverage/unit_tests.tix
+			$(RM) tests/*.html
 
 clean:
 			$(RM) ./**/*.o
