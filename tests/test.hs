@@ -34,6 +34,14 @@ test_16 = testCase "test16" (assertEqual "test16" True (isNumber "3"))
 test_17 = testCase "test17" (assertEqual "test17" True (isNumber ""))
 test_18 = testCase "test18" (assertEqual "test18" False (isNumber "a"))
 test_19 = testCase "test19" (assertEqual "test19" True (parseArgs ["1","2","3"]))
+test_20 = testCase "test20" (assertEqual "test20" True (parseArgs []))
+test_21 = testCase "test21" (assertEqual "test21" False (parseArgs ["1","2","a"]))
+test_22 = testCase "test22" (assertEqual "test22" [] (listStringTolistInt []))
+test_23 = testCase "test23" (assertEqual "test23" [1,2,3] (listStringTolistInt ["1","2","3"]))
+test_24 = testCase "test24" (assertEqual "test24" True (checkEndList ["1","2","3"]))
+test_25 = testCase "test25" (assertEqual "test25" False (checkEndList ["5","2","3"]))
+test_26 = testCase "test26" (assertEqual "test26" (Just 3) (readInt "3"))
+test_27 = testCase "test27" (assertEqual "test27" Nothing (readInt "a"))
 
 -- Test to be run
 tests :: Test
@@ -57,7 +65,15 @@ tests = testSuite "My Test Suite"
         test_16,
         test_17,
         test_18,
-        test_19
+        test_19,
+        test_20,
+        test_21,
+        test_22,
+        test_23,
+        test_24,
+        test_25,
+        test_26,
+        test_27
     ]
 
 -- Run the tests
