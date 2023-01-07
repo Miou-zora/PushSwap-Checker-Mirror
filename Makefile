@@ -59,7 +59,8 @@ tests_run:		fclean
 			./$(TEST_BINARY)
 			mv *.tix tests/coverage
 			hpc report --per-module --decl-list tests/coverage/unit_tests.tix
-			hpc markup --destdir=tests tests/coverage/unit_tests.tix
+			hpc markup --destdir=tests tests/coverage/unit_tests.tix \
+			--exclude=Main
 
 tclean:
 			$(RM) tests/coverage/unit_tests.tix
