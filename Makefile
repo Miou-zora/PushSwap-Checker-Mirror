@@ -16,7 +16,10 @@ SRC				:=	$(addsuffix $(HASK_EXTENSION), $(SRC))
 
 MAIN			=	src/main.hs
 
-TEST_SRC		=
+TESTS_DIR		=	tests
+TESTS_SRC		=	test
+TESTS_SRC		:=	$(addprefix $(TESTS_DIR)/, $(TESTS_SRC))
+TESTS_SRC		:=	$(addsuffix $(HASK_EXTENSION), $(TESTS_SRC))
 
 OBJ				=	$(MAIN:%.hs=%.o)
 
@@ -51,14 +54,15 @@ build:
 			ghc	-o $(NAME) $(SRC) $(MAIN)
 
 tests_run:		tclean
-
+			ghc -o $(TEST_BINARY) $(TESTS_SRC) $(SRC) -v1
 tclean:
+			$(RM) $(TEST_BINARY)
 
 clean:
 			$(RM) ./**/*.o
 			$(RM) ./**/*.hi
 
-fclean:			clean
+fclean:		clean tclean
 			$(RM) $(NAME)
 
 re:				fclean all
