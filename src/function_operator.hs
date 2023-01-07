@@ -2,7 +2,7 @@
 -- EPITECH PROJECT, 2023
 -- function for operator for the project
 -- File description:
--- the all operator : sa, sb ect...
+-- the all operator : sa, sb sc pa pb ra rb rr rra rrb rrr
 -}
 
 op_swap_sa_sb :: [Int] -> [Int]
