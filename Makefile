@@ -55,10 +55,10 @@ build:
 			ghc	-o $(NAME) $(SRC) $(MAIN)
 
 tests_run:		fclean
-			ghc --make -fhpc -o $(TEST_BINARY) $(TESTS_SRC) $(SRC) -v1
-			./$(TEST_BINARY) -t
+			ghc -fhpc -o $(TEST_BINARY) $(TESTS_SRC) $(SRC)
+			./$(TEST_BINARY)
 			mv *.tix tests/coverage
-			hpc report tests/coverage/unit_tests.tix
+			hpc report --per-module --decl-list tests/coverage/unit_tests.tix --verbosity=2
 
 tclean:
 			$(RM) tests/coverage/unit_tests.tix
