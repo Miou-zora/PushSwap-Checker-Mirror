@@ -40,9 +40,9 @@ switch a b
     | length a == 3 = bigOperator a b
     | otherwise = b
 
-executer :: [String] -> ([Int], [Int]) -> ([Int], [Int])
-executer [] integers = integers
-executer (a:an) integers = executer an (switch a integers)
+execute :: [String] -> ([Int], [Int]) -> ([Int], [Int])
+execute [] integers = integers
+execute (a:an) integers = execute an (switch a integers)
 
 compareTwoListInt :: [Int] -> [Int] -> Bool
 compareTwoListInt [] [] = True
@@ -56,10 +56,8 @@ checkEnd :: ([Int], [Int]) -> [Int] -> Bool
 checkEnd (a, b) c = compareTwoListInt a c
 
 pushSwapChecker :: [String] -> [Int] -> Bool
-pushSwapChecker _ [] = True
-pushSwapChecker inputOperators integers
-    | (checkInputOperator inputOperators) && (False) = False
-    | otherwise = checkEnd (executer (reverse inputOperators) (reverse integers, [])) integers
+pushSwapChecker [] _ = True
+pushSwapChecker inputOperators integers = checkEnd (execute (reverse inputOperators) (reverse integers, [])) integers
 
 checkInputs :: String -> [String] -> Bool
 checkInputs a b = checkInputOperator (words a) && parseArgs b
