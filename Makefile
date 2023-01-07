@@ -52,7 +52,7 @@ NAME			=	pushswap_checker
 all:		build
 
 build:
-			ghc	-o $(NAME) $(SRC) $(MAIN)
+			ghc	-o $(NAME) $(SRC) $(MAIN) -Wall
 
 tests_run:		fclean
 			ghc -fhpc -o $(TEST_BINARY) $(TESTS_SRC) $(SRC)
