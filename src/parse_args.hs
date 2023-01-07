@@ -33,7 +33,7 @@ listStringTolistInt :: [String] -> [Int]
 listStringTolistInt [] = []
 listStringTolistInt (x:list) = (read (x)::Int):(listStringTolistInt list)
 
-checkEndList :: [String] -> [String] -> Bool
-checkEndList my_list your_list
-    | (my_list == your_list) = True
+checkEndList :: [String] -> Bool
+checkEndList my_list
+    | (my_list == (sort my_list)) = True
     | otherwise = False
