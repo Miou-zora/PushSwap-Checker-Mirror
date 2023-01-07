@@ -8,7 +8,6 @@
 module ArgsParse where
 
 import Data.Char (isDigit)
-import Data.List
 
 isNumber :: [Char] -> Bool
 isNumber [] = True
@@ -34,8 +33,3 @@ parseArgs (a:ax)
 listStringTolistInt :: [String] -> [Int]
 listStringTolistInt [] = []
 listStringTolistInt (x:list) = (read (x)::Int):(listStringTolistInt list)
-
-checkEndList :: [String] -> Bool
-checkEndList my_list
-    | (my_list == (sort my_list)) = True
-    | otherwise = False
