@@ -1,0 +1,14 @@
+isNumber :: [Char] -> Bool
+isNumber [] = True
+isNumber (a:an)
+    | isDigit a = isNumber an
+    | otherwise = False
+
+readInt :: [Char] -> Maybe Int
+readInt [] = Nothing
+readInt ('-':an)
+    | isNumber (an) = Just (-(read (an)::Int))
+    | otherwise = Nothing
+readInt (a:an)
+    | isNumber (a:an) = Just (read (a:an)::Int)
+    | otherwise = Nothing
