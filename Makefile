@@ -10,7 +10,8 @@ SRC_DIR			=	src
 HASK_EXTENSION	=	.hs
 
 SRC				=	parse_args	\
-					function_operator
+					function_operator	\
+					pushswapChecker
 SRC				:=	$(addprefix $(SRC_DIR)/, $(SRC))
 SRC				:=	$(addsuffix $(HASK_EXTENSION), $(SRC))
 
