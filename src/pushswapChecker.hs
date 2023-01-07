@@ -5,7 +5,8 @@
 -- pushswapChecker
 -}
 
-module PushSwapChecker where
+module 
+ where
 
 import Data.List
 import ArgsParse

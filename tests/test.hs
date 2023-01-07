@@ -8,6 +8,7 @@
 import Test.HUnit
 import Operator
 import ArgsParse
+import PushSwapChecker
 
 -- Test case data type
 testCase label assertion = TestLabel label (TestCase assertion)
@@ -42,6 +43,10 @@ test_24 = testCase "test24" (assertEqual "test24" True (checkEndList ["1","2","3
 test_25 = testCase "test25" (assertEqual "test25" False (checkEndList ["5","2","3"]))
 test_26 = testCase "test26" (assertEqual "test26" (Just 3) (readInt "3"))
 test_27 = testCase "test27" (assertEqual "test27" Nothing (readInt "a"))
+test_28 = testCase "test28" (assertEqual "test28" True (checkInputOperator ["sa", "sa", "sb"]))
+test_29 = testCase "test29" (assertEqual "test29" True (checkInputOperator []))
+test_30 = testCase "test30" (assertEqual "test30" False (checkInputOperator ["s"]))
+
 
 -- Test to be run
 tests :: Test
@@ -73,7 +78,10 @@ tests = testSuite "My Test Suite"
         test_24,
         test_25,
         test_26,
-        test_27
+        test_27,
+        test_28,
+        test_29,
+        test_30
     ]
 
 -- Run the tests
