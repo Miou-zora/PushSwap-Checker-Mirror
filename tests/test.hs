@@ -32,7 +32,7 @@ test_14 = testCase "test14" (assertEqual "test14" [3] (op_rotate_rra_rrb [3]))
 test_15 = testCase "test15" (assertEqual "test15" ([3,1,2], [3,1,2]) (op_rotate_rrr [1,2,3] [1,2,3]))
 test_16 = testCase "test16" (assertEqual "test16" True (isNumber "3"))
 test_17 = testCase "test17" (assertEqual "test17" True (isNumber ""))
-test_18 = testCase "test18" (assertEqual "test18" True (isNumber "a"))
+test_18 = testCase "test18" (assertEqual "test18" False (isNumber "a"))
 test_19 = testCase "test19" (assertEqual "test19" True (parseArgs ["1","2","3"]))
 
 -- Test to be run
