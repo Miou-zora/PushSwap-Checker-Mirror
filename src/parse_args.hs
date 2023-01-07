@@ -6,6 +6,7 @@
 -}
 
 import Data.Char (isDigit)
+import Data.List
 
 isNumber :: [Char] -> Bool
 isNumber [] = True
@@ -27,3 +28,12 @@ parseArgs [] = True
 parseArgs (a:ax)
     | (readInt a) == Nothing = False
     | otherwise = parseArgs ax
+
+listStringTolistInt :: [String] -> [Int]
+listStringTolistInt [] = []
+listStringTolistInt (x:list) = (read (x)::Int):(listStringTolistInt list)
+
+checkEndList :: [String] -> [String] -> Bool
+checkEndList my_list your_list
+    | (my_list == your_list) = True
+    | otherwise = False
