@@ -13,7 +13,8 @@ import Operator
 import System.Exit
 
 operators :: [String]
-operators = ["sa", "sb", "sc", "pa", "pb", "ra", "rb", "rr", "rra", "rrb", "rrr"]
+operators = ["sa", "sb", "sc", "pa", "pb", "ra", "rb", "rr",
+             "rra", "rrb", "rrr"]
 
 goodExit :: IO ()
 goodExit = putStrLn "OK" >> exitWith (ExitSuccess)
@@ -64,7 +65,8 @@ checkEnd (a, b) c = compareTwoListInt a (sort c)
 
 pushSwapChecker :: [String] -> [Int] -> Bool
 pushSwapChecker [] a = checkEnd (a, []) a
-pushSwapChecker inputOperators integers = checkEnd (execute ( inputOperators) (integers, [])) integers
+pushSwapChecker inputOperators integers = (
+    checkEnd (execute (inputOperators) (integers, [])) integers)
 
 checkInputs :: String -> [String] -> Bool
 checkInputs a [] = False

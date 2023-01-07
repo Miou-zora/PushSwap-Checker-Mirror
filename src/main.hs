@@ -13,7 +13,8 @@ main :: IO ()
 main = do
     inputOperators <- getLine
     integers <- getArgs
-    if ((checkInputs inputOperators integers) && pushSwapChecker (words inputOperators) (listStringTolistInt integers))
+    if ((checkInputs inputOperators integers) &&
+        pushSwapChecker (words inputOperators) (listStringTolistInt integers))
         then goodExit
         else errorExit
 
