@@ -58,7 +58,7 @@ tests_run:		fclean
 			ghc -fhpc -o $(TEST_BINARY) $(TESTS_SRC) $(SRC)
 			./$(TEST_BINARY)
 			mv *.tix tests/coverage
-			hpc report --per-module --decl-list tests/coverage/unit_tests.tix --verbosity=2
+			hpc report --per-module --decl-list tests/coverage/unit_tests.tix
 			hpc markup --destdir=tests tests/coverage/unit_tests.tix
 
 tclean:
