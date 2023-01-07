@@ -55,7 +55,7 @@ execute_lambda = testCase "execute_lambda" (assertEqual "execute_lambda" ([1, 2,
 execute_lambda_sa = testCase "execute_lambda_sa" (assertEqual "execute_lambda_sa" ([2, 1, 3], [1, 2, 3]) (execute ["sa"] ([1, 2, 3], [1, 2, 3])))
 compareTwoListInt_false = testCase "compareTwoListInt_false" (assertEqual "compareTwoListInt_false" False (compareTwoListInt [1, 2, 3] [1, 3, 3]))
 compareTwoListInt_true = testCase "compareTwoListInt_true" (assertEqual "compareTwoListInt_true" True (compareTwoListInt [1, 2, 3] [1, 2, 3]))
-compareTwoListInt_false = testCase "compareTwoListInt_false" (assertEqual "compareTwoListInt_false" False (compareTwoListInt [1, 3] [1, 2, 3]))
+compareTwoListInt_false_s = testCase "compareTwoListInt_false_s" (assertEqual "compareTwoListInt_false_s" False (compareTwoListInt [1, 3] [1, 2, 3]))
 checkEnd_true = testCase "checkEnd_true" (assertEqual "checkEnd_true" True (checkEnd ([1, 3], []) [3, 1]))
 checkEnd_false_empty = testCase "checkEnd_false_empty" (assertEqual "checkEnd_false_empty" False (checkEnd ([3, 1], []) [3, 1]))
 checkEnd_false = testCase "checkEnd_false" (assertEqual "checkEnd_false" False (checkEnd ([1], []) [3, 1]))
@@ -103,7 +103,7 @@ tests = testSuite "My Test Suite"
         switch_lambda_sa,
         execute_lambda,
         execute_lambda_sa,
-        compareTwoListInt_false,
+        compareTwoListInt_false_s,
         compareTwoListInt_true,
         compareTwoListInt_false,
         checkEnd_true,
