@@ -36,11 +36,13 @@ littleOperator "pa" a = op_push_pa a
 littleOperator "pb" a = op_push_pb a
 littleOperator "ra" (a, b) = ((op_rotate_ra_rb a), b)
 littleOperator "rb" (a, b) = (a, (op_rotate_ra_rb b))
+littleOperator _ a = a
 
 bigOperator :: String -> ([Int], [Int]) -> ([Int], [Int])
 bigOperator "rra" (a, b) = (op_rotate_rra_rrb a, b)
 bigOperator "rrb" (a, b) = (a, op_rotate_rra_rrb b)
 bigOperator "rrr" (a, b) = op_rotate_rrr a b
+bigOperator _ a = a
 
 switch :: String -> ([Int], [Int]) -> ([Int], [Int])
 switch a b
@@ -61,7 +63,7 @@ compareTwoListInt (a:an) (b:bn)
     | otherwise = compareTwoListInt an bn
 
 checkEnd :: ([Int], [Int]) -> [Int] -> Bool
-checkEnd (a, b) c = compareTwoListInt a (sort c)
+checkEnd (a, _) c = compareTwoListInt a (sort c)
 
 pushSwapChecker :: [String] -> [Int] -> Bool
 pushSwapChecker [] a = checkEnd (a, []) a
@@ -69,5 +71,5 @@ pushSwapChecker inputOperators integers = (
     checkEnd (execute (inputOperators) (integers, [])) integers)
 
 checkInputs :: String -> [String] -> Bool
-checkInputs a [] = False
+checkInputs _ [] = False
 checkInputs a b = checkInputOperator (words a) && parseArgs b
