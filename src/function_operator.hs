@@ -20,7 +20,7 @@ op_push_pb :: ([Int], [Int]) -> ([Int], [Int])
 op_push_pb ([], list) = ([], list)
 op_push_pb ((a:list), (list2)) = (list, a:list2)
 
-op_rotate_ra :: [Int] -> [Int]
-op_rotate_ra an
+op_rotate_ra_rb :: [Int] -> [Int]
+op_rotate_ra_rb an
     | (length an) <= 1 = an
-op_rotate_ra (a:an) = ((last (a:an)):(init an) ++ [a])
+op_rotate_ra_rb (a:an) = ((last (a:an)):(init an) ++ [a])
