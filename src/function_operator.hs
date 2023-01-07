@@ -5,6 +5,17 @@
 -- the all operator : sa, sb sc pa pb ra rb rr rra rrb rrr
 -}
 
+module Operator (
+    op_swap_sa_sb,
+    op_swap_sc,
+    op_push_pa,
+    op_push_pb,
+    op_rotate_ra_rb,
+    op_rotate_rr,
+    op_rotate_rra_rrb,
+    op_rotate_rrr
+) where
+
 op_swap_sa_sb :: [Int] -> [Int]
 op_swap_sa_sb [] = []
 op_swap_sa_sb (f_x:f_y:list) = (f_y:f_x:list)

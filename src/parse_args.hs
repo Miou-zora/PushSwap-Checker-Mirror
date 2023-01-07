@@ -5,6 +5,12 @@
 -- parse_args
 -}
 
+module ArgsParse (
+    parseArgs,
+    listStringTolistInt,
+    checkEndList
+) where
+
 import Data.Char (isDigit)
 import Data.List
 
