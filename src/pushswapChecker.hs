@@ -63,8 +63,9 @@ checkEnd :: ([Int], [Int]) -> [Int] -> Bool
 checkEnd (a, b) c = compareTwoListInt a (sort c)
 
 pushSwapChecker :: [String] -> [Int] -> Bool
-pushSwapChecker [] _ = True
+pushSwapChecker [] a = checkEnd (a, []) a
 pushSwapChecker inputOperators integers = checkEnd (execute ( inputOperators) (integers, [])) integers
 
 checkInputs :: String -> [String] -> Bool
+checkInputs a [] = False
 checkInputs a b = checkInputOperator (words a) && parseArgs b
