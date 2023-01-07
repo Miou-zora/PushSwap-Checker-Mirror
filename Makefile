@@ -50,15 +50,15 @@ build:
 			ghc	-o $(NAME) $(SRC) $(MAIN)
 
 tests_run:		tclean
-			
+
 tclean:
-			
+
 clean:
 			$(RM) ./**/*.o
 			$(RM) ./**/*.hi
-			$(RM) $(NAME)
 
 fclean:			clean
+			$(RM) $(NAME)
 
 re:				fclean all
 
