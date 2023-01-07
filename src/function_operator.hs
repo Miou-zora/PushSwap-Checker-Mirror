@@ -29,4 +29,9 @@ op_rotate_rr :: [Int] -> [Int] -> ([Int], [Int])
 op_rotate_rr list_a list_b = (op_rotate_ra_rb list_a, op_rotate_ra_rb list_b)
 
 op_rotate_rra_rrb :: [Int] -> [Int]
+op_rotate_rra_rrb an
+    | (length an) < 2 = an
 op_rotate_rra_rrb (a:an) = ((last (a:an)):(init (a:an)))
+
+op_rotate_rrr :: [Int] -> [Int] -> ([Int], [Int])
+op_rotate_rrr a b = (op_rotate_rra_rrb a, op_rotate_rra_rrb b)
