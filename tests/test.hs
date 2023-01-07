@@ -46,6 +46,20 @@ test_27 = testCase "test27" (assertEqual "test27" Nothing (readInt "a"))
 test_28 = testCase "test28" (assertEqual "test28" True (checkInputOperator ["sa", "sa", "sb"]))
 test_29 = testCase "test29" (assertEqual "test29" True (checkInputOperator []))
 test_30 = testCase "test30" (assertEqual "test30" False (checkInputOperator ["s"]))
+test_31 = testCase "test31" (assertEqual "test31" False (checkInputOperator [""]))
+test_32 = testCase "test32" (assertEqual "test32" ([2, 1, 3], [1, 2, 3]) (littleOperator "sa" ([1, 2, 3], [1, 2, 3])))
+test_33 = testCase "test33" (assertEqual "test33" ([3, 1, 2], [3, 1, 2]) (bigOperator "rrr" ([1, 2, 3], [1, 2, 3])))
+test_34 = testCase "test34" (assertEqual "test34" ([3, 1, 2], [3, 1, 2]) (switch "rrr" ([1, 2, 3], [1, 2, 3])))
+test_35 = testCase "test35" (assertEqual "test35" ([2, 1, 3], [1, 2, 3]) (switch "sa" ([1, 2, 3], [1, 2, 3])))
+test_36 = testCase "test36" (assertEqual "test36" ([1, 2, 3], [1, 2, 3]) (execute ["sa", "sa"] ([1, 2, 3], [1, 2, 3])))
+test_37 = testCase "test37" (assertEqual "test37" ([2, 1, 3], [1, 2, 3]) (execute ["sa"] ([1, 2, 3], [1, 2, 3])))
+test_38 = testCase "test38" (assertEqual "test38" False (compareTwoListInt [1, 2, 3] [1, 3, 3]))
+test_39 = testCase "test39" (assertEqual "test39" True (compareTwoListInt [1, 2, 3] [1, 2, 3]))
+test_40 = testCase "test40" (assertEqual "test40" False (compareTwoListInt [1, 3] [1, 2, 3]))
+test_41 = testCase "test41" (assertEqual "test41" True (checkEnd ([1, 3], []) [3, 1]))
+test_42 = testCase "test42" (assertEqual "test42" False (checkEnd ([3, 1], []) [3, 1]))
+test_43 = testCase "test43" (assertEqual "test43" False (checkEnd ([1], []) [3, 1]))
+test_44 = testCase "test44" (assertEqual "test44" True (pushSwapChecker ["sa", "pb", "pb", "pb", "sa", "pa", "pa", "pa"] [2, 1, 3, 6, 5, 8]))
 
 
 -- Test to be run
@@ -81,7 +95,21 @@ tests = testSuite "My Test Suite"
         test_27,
         test_28,
         test_29,
-        test_30
+        test_30,
+        test_31,
+        test_32,
+        test_33,
+        test_34,
+        test_35,
+        test_36,
+        test_37,
+        test_38,
+        test_39,
+        test_40,
+        test_41,
+        test_42,
+        test_43,
+        test_44
     ]
 
 -- Run the tests
