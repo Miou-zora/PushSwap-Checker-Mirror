@@ -46,14 +46,15 @@ build:
 
 tests_run:		fclean
 			ghc -fhpc -o $(TEST_BINARY) $(TESTS_SRC) $(SRC)
+			$(RM) tests/coverage/unit_tests.tix
 			./$(TEST_BINARY)
 			mv *.tix tests/coverage
 			hpc report --per-module --decl-list tests/coverage/unit_tests.tix
 			hpc markup --destdir=tests tests/coverage/unit_tests.tix \
 			--exclude=Main
+			$(MAKE) fclean
 
 tclean:
-			$(RM) tests/coverage/unit_tests.tix
 			$(RM) tests/*.html
 
 clean:
