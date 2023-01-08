@@ -36,6 +36,7 @@ littleOperator "pa" a = op_push_pa a
 littleOperator "pb" a = op_push_pb a
 littleOperator "ra" (a, b) = ((op_rotate_ra_rb a), b)
 littleOperator "rb" (a, b) = (a, (op_rotate_ra_rb b))
+littleOperator "rr" (a, b) = op_rotate_rr a b
 littleOperator _ a = a
 
 bigOperator :: String -> ([Int], [Int]) -> ([Int], [Int])
