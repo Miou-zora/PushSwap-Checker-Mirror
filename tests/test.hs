@@ -26,10 +26,10 @@ op_push_pa_lambda = testCase "op_push_pa_lambda" (assertEqual "op_push_pa_lambda
 op_push_pa_empty = testCase "op_push_pa_empty" (assertEqual "op_push_pa_empty" ([1,2,3], []) (op_push_pa ([1,2,3],[])))
 op_push_pb_lambda = testCase "op_push_pb_lambda" (assertEqual "op_push_pb_lambda" ([2,3],[1,4,5,6]) (op_push_pb ([1,2,3], [4,5,6])))
 op_push_pb_empty = testCase "op_push_pb_empty" (assertEqual "op_push_pb_empty" ([], [4,5,6]) (op_push_pb ([],[4,5,6])))
-op_rotate_ra_rb_lambda = testCase "op_rotate_ra_rb_lambda" (assertEqual "op_rotate_ra_rb_lambda" ([3,1,2]) (op_rotate_ra_rb [1,2,3]))
+op_rotate_ra_rb_lambda = testCase "op_rotate_ra_rb_lambda" (assertEqual "op_rotate_ra_rb_lambda" ([2,3,1]) (op_rotate_ra_rb [1,2,3]))
 op_rotate_ra_rb_1_arg = testCase "op_rotate_ra_rb_1_arg" (assertEqual "op_rotate_ra_rb_1_arg" ([1]) (op_rotate_ra_rb [1]))
 op_rotate_ra_rb_empty = testCase "op_rotate_ra_rb_empty" (assertEqual "op_rotate_ra_rb_empty" [] (op_rotate_ra_rb []))
-op_rotate_rr_lambda = testCase "op_rotate_rr_lambda" (assertEqual "op_rotate_rr_lambda" ([3,1,2], [3,1,2]) (op_rotate_rr [1,2,3] [1,2,3]))
+op_rotate_rr_lambda = testCase "op_rotate_rr_lambda" (assertEqual "op_rotate_rr_lambda" ([2,3,1], [2,3,1]) (op_rotate_rr [1,2,3] [1,2,3]))
 op_rotate_rra_rrb_lambda = testCase "op_rotate_rra_rrb_lambda" (assertEqual "op_rotate_rra_rrb_lambda" [3,1,2] (op_rotate_rra_rrb [1,2,3]))
 op_rotate_rra_rrb_1_arg = testCase "op_rotate_rra_rrb_1_arg" (assertEqual "op_rotate_rra_rrb_1_arg" [3] (op_rotate_rra_rrb [3]))
 op_rotate_rra_rrb_1_empty = testCase "op_rotate_rra_rrb_1_empty" (assertEqual "op_rotate_rra_rrb_1_empty" [] (op_rotate_rra_rrb []))
@@ -73,6 +73,8 @@ pushSwapChecker_Empty = testCase "pushSwapChecker_Empty" (assertEqual "pushSwapC
 checkInputs_false = testCase "checkInputs_false" (assertEqual "checkInputs_false" False (checkInputs "rezar" []))
 checkInputs_true = testCase "checkInputs_true" (assertEqual "checkInputs_true" True (checkInputs "sa" ["1"]))
 pushSwapChecker_all = testCase "pushSwapChecker_all" (assertEqual "pushSwapChecker_all" False (pushSwapChecker ["pb", "pb", "pb", "pb", "sb", "rb", "rrb", "sc", "pa", "pb", "pb", "rrb", "ra", "rb", "rra", "rrr"] [1, 2, 3, 4, 1, 1, 2, 5, 1, 1]))
+execute_all = testCase "execute_all" (assertEqual "execute_all" ([1, 2, 3], []) (execute ["ra", "ra", "pb", "ra", "pb", "pb", "pa", "pa", "pa"] ([3, 2, 1], [])))
+
 
 -- Test to be run
 tests :: Test
@@ -132,7 +134,8 @@ tests = testSuite "My Test Suite"
         pushSwapChecker_Empty,
         checkInputs_true,
         checkInputs_false,
-        pushSwapChecker_all
+        pushSwapChecker_all,
+        execute_all
     ]
 
 -- Run the tests
