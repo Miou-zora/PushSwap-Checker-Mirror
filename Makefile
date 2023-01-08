@@ -1,8 +1,8 @@
 ##
 ## EPITECH PROJECT, 2022
-## Corewar
+## pushswap checker
 ## File description:
-## Makefile for the corewar project
+## Makefile for pushswap checker
 ##
 
 SRC_DIR			=	src
@@ -25,16 +25,6 @@ TESTS_SRC		:=	$(addsuffix $(HASK_EXTENSION), $(TESTS_SRC))
 OBJ				=	$(MAIN:%.hs=%.o)
 
 CC				=	ghc
-
-CFLAGS			=	-Wall -Wextra -Wshadow -Werror
-
-INCLUDE			=	-I./include -I./asm/include -I./corewar/include
-
-LIB_MY_FLAGS 	= 	-L./lib -lmy
-
-LIB_FLAGS		=	$(LIB_MY_FLAGS)
-
-TESTS_FLAGS		=	-lcriterion --coverage
 
 TEST_BINARY		=	unit_tests
 
