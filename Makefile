@@ -10,6 +10,7 @@ SRC_DIR			=	src
 HASK_EXTENSION	=	.hs
 
 
+
 SRC				=	parse_args	\
 					function_operator	\
 					pushswapChecker
